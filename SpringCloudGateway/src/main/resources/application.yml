@@ -1,0 +1,13 @@
+spring:
+  application:    name: cloud-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: auth_route
+        uri: lb://AUTHENTICATOR-SERVICE
+        predicates:
+        - Path=/user/**
+      - id: scheduler_route
+        uri: lb://INTERVIEW-SCHEDULER-SERVICE
+        predicates:
+        - Path=/inteviewscheduler/**
